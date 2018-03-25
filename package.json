@@ -1,0 +1,27 @@
+{
+  "name": "api_gateway_343",
+  "version": "1.0.0",
+  "description": "API gateway for SWEN 343 class project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tfaticone/api_gateway_343.git"
+  },
+  "author": "Thomas Faticone",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tfaticone/api_gateway_343/issues"
+  },
+  "homepage": "https://github.com/tfaticone/api_gateway_343#readme",
+  "devDependencies": {
+    "express": "^4.16.3"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "jsonwebtoken": "^8.2.0",
+    "mongodb": "^3.0.5"
+  }
+}
