@@ -6,7 +6,55 @@ const port = process.env.PORT || 3000;
 
 /** IMPORT DEPENDENCIES */
 var bodyParser = require('body-parser');
-const MongoClient = require('mongodb').MongoClient;
+const Sequelize = require('sequelize');
+const sequelize = new Sequelize('api_gateway_343', 'tfaticone', 'pass1234', {
+    host: 'api-gateway-343.cspllbshelpx.us-east-2.rds.amazonaws.com',
+    dialect: 'mysql',
+    operatorsAliases: false,
+    pool: {
+        max: 5,
+        min: 0,
+        acquire: 30000,
+        idle: 10000
+    }
+});
+
+/** AUTHENTICATE CONNECTION TO AWS **/
+sequelize
+    .authenticate()
+    .then(() => {
+        console.log('Connection has been established successfully.');
+    })
+    .catch(err => {
+        console.error('Unable to connect to the database:', err);
+    });
+
+/** AWS MODELS **/
+const User = sequelize.define('user', {
+    id: {
+        type: Sequelize.INTEGER,
+        unique: true,
+        primaryKey: true,
+        autoIncrement: true
+    },
+    username: {
+        type: Sequelize.STRING
+    },
+    password: {
+        type: Sequelize.STRING
+    },
+    type: {
+        type: Sequelize.ENUM,
+        values: ['employee', 'customer']
+    },
+    outside_id: {
+        type: Sequelize.INTEGER
+    }
+});
+
+// force: true will drop the table if it already exists
+User.sync({force: true}).then(() => {
+});
 
 app.use(bodyParser.json()); // parse application/json
 
@@ -52,15 +100,7 @@ router.use('/test', testApi); //Api for messaging
 
 app.use('/', router);
 
-
-
-
-MongoClient.connect('mongodb://admin:admin1234@ds123499.mlab.com:23499/users', (err, client) => {
-    if (err) return console.log(err);
-    db = client.db('users'); // whatever your database name is
-
-    /** RUN APP */
-    app.listen(port, function () {
-        console.log('[SERVER] I\'m listening on PORT: ' +  port);
-    });
+/** RUN APP */
+app.listen(port, function () {
+    console.log('[SERVER] I\'m listening on PORT: ' +  port);
 });
