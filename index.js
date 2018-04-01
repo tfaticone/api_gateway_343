@@ -14,6 +14,10 @@ app.use(bodyParser.json()); // parse application/json
 var authApi = require('./routers/authApi');
 router.use('/auth', authApi); //Api for messaging
 
+app.get('/', function (req, res) {
+    res.send('hello world')
+})
+
 /** VERIFICATION OF TOKEN **/
 router.use((req, res, next) => {
     //GET THE BEARER TOKEN
