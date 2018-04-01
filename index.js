@@ -2,7 +2,7 @@ const express = require('express');
 var router = express.Router();
 const jwt = require('jsonwebtoken');
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 /** IMPORT DEPENDENCIES */
 var bodyParser = require('body-parser');
@@ -16,7 +16,7 @@ router.use('/auth', authApi); //Api for messaging
 
 app.get('/', function (req, res) {
     res.send('hello world')
-})
+});
 
 /** VERIFICATION OF TOKEN **/
 router.use((req, res, next) => {
@@ -61,6 +61,6 @@ MongoClient.connect('mongodb://admin:admin1234@ds123499.mlab.com:23499/users', (
 
     /** RUN APP */
     app.listen(port, function () {
-        console.log('[SERVER] I\'m listening on PORT: 3000');
+        console.log('[SERVER] I\'m listening on PORT: ' +  port);
     });
 });
