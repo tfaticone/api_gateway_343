@@ -52,6 +52,12 @@ router.use('/test', testApi); //Api for messaging
 app.use('/', router);
 
 /** RUN APP */
-app.listen(port, function () {
+var server = app.listen(port, function () {
     console.log('[SERVER] I\'m listening on PORT: ' +  port);
 });
+
+module.exports = server;
+
+exports.close = function (callback) {
+    this.server.close(callback);
+};
