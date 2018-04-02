@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "tfaticone",
+    "password": "pass1234",
+    "database": "api_gateway_343",
+    "host": "api-gateway-343.cspllbshelpx.us-east-2.rds.amazonaws.com",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "tfaticone",
+    "password": "pass1234",
+    "database": "api_gateway_343",
+    "host": "api-gateway-343.cspllbshelpx.us-east-2.rds.amazonaws.com",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "tfaticone",
+    "password": "pass1234",
+    "database": "api_gateway_343",
+    "host": "api-gateway-343.cspllbshelpx.us-east-2.rds.amazonaws.com",
+    "dialect": "mysql"
+  }
+}
