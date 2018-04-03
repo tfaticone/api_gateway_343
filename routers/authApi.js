@@ -49,7 +49,8 @@ authRouter.post('/create', (req, res) => {
                     jwt.sign({
                         username: result.dataValues.username,
                         password: result.dataValues.password,
-                        type: result.dataValues.type
+                        type: result.dataValues.type,
+                        outside_id: result.dataValues.outside_id
                     }, 'secretkey', (err, token) => {
                         res.json({
                             token,
