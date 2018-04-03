@@ -12,13 +12,6 @@ module.exports = (sequelize, DataTypes) => {
       },
       password: {
           type: DataTypes.STRING
-      },
-      type: {
-          type: DataTypes.ENUM,
-          values: ['employee', 'customer']
-      },
-      outside_id: {
-          type: DataTypes.INTEGER
       }
   }, {});
   users.associate = function(models) {

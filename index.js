@@ -54,10 +54,11 @@ app.use('/', router);
 /** RUN APP */
 var server = app.listen(port, function () {
     console.log('[SERVER] I\'m listening on PORT: ' +  port);
+    server.emit("appStarted");
 });
 
 module.exports = server;
 
 exports.close = function (callback) {
-    this.server.close(callback);
+    server.close(callback);
 };

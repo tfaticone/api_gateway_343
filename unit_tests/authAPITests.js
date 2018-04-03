@@ -1,9 +1,16 @@
 var request = require('supertest');
 var should = require('should');
-describe('Testing Login', function () {
+
+
+describe('Testing Auth', function () {
     var server;
-    before(function () {
-        server = require('../index');
+    before(function (done) {
+        server = require('../index.js');
+        this.timeout(10000);
+        server.on("appStarted", function() {
+            console.log("app started");
+            done();
+        })
     });
     it('responds to POST /auth/login with no account', function testSlash(done) {
         request(server)
@@ -33,20 +40,10 @@ describe('Testing Login', function () {
                 done();
             })
     });
-    after(function () {
-        server.close();
-    });
-});
-
-describe('Testing Creation', function () {
-    var server;
-    before(function () {
-        server = require('../index');
-    });
-    it('responds to POST /auth/login with account', function testSlash(done) {
+    it('responds to POST /auth/create without Password', function testSlash(done) {
         request(server)
             .post('/auth/create')
-            .send({"username": "test2", "password": "testing123", "type":"customer"})
+            .send({"username": "test2"})
             .expect(200)
             .expect('Content-Type', /json/)
             .end(function(err, res) {
@@ -57,10 +54,10 @@ describe('Testing Creation', function () {
                 done();
             })
     });
-    it('responds to POST /auth/login with account', function testSlash(done) {
+    it('responds to POST /auth/create with duplicate username', function testSlash(done) {
         request(server)
             .post('/auth/create')
-            .send({"username": "test2", "password": "testing123", "type":"customer", "outside_id": 3})
+            .send({"username": "test2", "password": "testing123"})
             .expect(200)
             .expect('Content-Type', /json/)
             .end(function(err, res) {
@@ -71,10 +68,10 @@ describe('Testing Creation', function () {
                 done();
             })
     });
-    it('responds to POST /auth/login with account', function testSlash(done) {
+    it('responds to POST /auth/create successfully', function testSlash(done) {
         request(server)
             .post('/auth/create')
-            .send({"username": makeid() + "test2", "password": makeid()+ "testing123", "type":"customer", "outside_id": 3})
+            .send({"username": makeid() + "test2", "password": makeid()+ "testing123"})
             .expect(200)
             .expect('Content-Type', /json/)
             .end(function(err, res) {
@@ -86,8 +83,8 @@ describe('Testing Creation', function () {
                 done();
             })
     });
-    after(function () {
-        server.close();
+    after(function (done) {
+        server.close(done);
     });
 });
 
