@@ -11,7 +11,7 @@ authRouter.post('/login', (req, res) => {
             attributes: ['username', 'password'],
             where: {
                 username: req.body.username,
-                password: req.body.password,
+                password: req.body.password
             }
         }).then((result) => {
            if(result) {
@@ -32,7 +32,7 @@ authRouter.post('/login', (req, res) => {
 });
 
 authRouter.post('/create', (req, res) => {
-    if(req.body.username && req.body.password) {
+    if(req.body.username && req.body.password && req.body.type && ['employee','customer'].includes(req.body.type)) {
         models.users.count({
             where: {
                 username: req.body.username
@@ -41,11 +41,13 @@ authRouter.post('/create', (req, res) => {
             if(result === 0) {
                 models.users.create({
                     username: req.body.username,
-                    password: req.body.password
+                    password: req.body.password,
+                    accountType: req.body.type
                 }).then((result) => {
                     jwt.sign({
                         username: result.dataValues.username,
                         password: result.dataValues.password,
+                        accountType: result.dataValues.accountType,
                         id: result.dataValues.id
                     }, 'secretkey', (err, token) => {
                         res.json({

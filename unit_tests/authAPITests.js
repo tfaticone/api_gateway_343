@@ -43,7 +43,7 @@ describe('Testing Auth', function () {
     it('responds to POST /auth/create without Password', function testSlash(done) {
         request(server)
             .post('/auth/create')
-            .send({"username": "test2"})
+            .send({"username": "test2","type":"employee"})
             .expect(200)
             .expect('Content-Type', /json/)
             .end(function(err, res) {
@@ -57,7 +57,7 @@ describe('Testing Auth', function () {
     it('responds to POST /auth/create with duplicate username', function testSlash(done) {
         request(server)
             .post('/auth/create')
-            .send({"username": "test2", "password": "testing123"})
+            .send({"username": "test2", "password": "testing123","type":"employee"})
             .expect(200)
             .expect('Content-Type', /json/)
             .end(function(err, res) {
@@ -71,7 +71,7 @@ describe('Testing Auth', function () {
     it('responds to POST /auth/create successfully', function testSlash(done) {
         request(server)
             .post('/auth/create')
-            .send({"username": makeid() + "test2", "password": makeid()+ "testing123"})
+            .send({"username": makeid() + "test2", "password": makeid()+ "testing123","type":"employee"})
             .expect(200)
             .expect('Content-Type', /json/)
             .end(function(err, res) {
