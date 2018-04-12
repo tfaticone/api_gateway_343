@@ -57,7 +57,7 @@ Silo | Prefix | Base URL
 --- | --- | ---
 HR | `hr-api` | `http://kennuware-1772705765.us-east-1.elb.amazonaws.com/api`
 Sales | `sales-api` | `http://54.242.81.38`
-Accounting | `accounting-api` | `N/A`
+Accounting | `accounting-api` | `https://swen-343-accounting-api.herokuapp.com/`
 Customer support | `cs-api` | `https://api-customerservice.azurewebsites.net/api`
 Manufacturing | `manufacturing-api` | `https://343-2175-manufacturing.azurewebsites.net/api`
 Inventory | `inventory-api` | `https://inventory343.azurewebsites.net/api`
