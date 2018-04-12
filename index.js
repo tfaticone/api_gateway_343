@@ -54,7 +54,7 @@ const HR_API_BASE_URL = "http://kennuware-1772705765.us-east-1.elb.amazonaws.com
 const SALES_API_BASE_URL = "http://54.242.81.38:8080";
 const ACCOUNTING_API_BASE_URL = "http://kennuware-1772705765.us-east-1.elb.amazonaws.com/api";
 const CS_API_BASE_URL = "https://api-customerservice.azurewebsites.net/api";
-const MANUFACTURING_API_BASE_URL = "https://343-2175-manufacturing.azurewebsites.net";
+const MANUFACTURING_API_BASE_URL = "https://343-2175-manufacturing.azurewebsites.net/api";
 const INVENTORY_API_BASE_URL = "https://inventory343.azurewebsites.net/api";
 
 /** REDIRECT **/
