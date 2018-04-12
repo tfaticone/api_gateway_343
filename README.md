@@ -56,7 +56,7 @@ The Prefixes with pertaining base urls are as follows:
 Silo | Prefix | Base URL
 --- | --- | ---
 HR | `hr-api` | `http://kennuware-1772705765.us-east-1.elb.amazonaws.com/api`
-Sales | `sales-api` | `http://54.242.81.38:8080`
+Sales | `sales-api` | `http://54.242.81.38`
 Accounting | `accounting-api` | `N/A`
 Customer support | `cs-api` | `https://api-customerservice.azurewebsites.net/api`
 Manufacturing | `manufacturing-api` | `https://343-2175-manufacturing.azurewebsites.net/api`

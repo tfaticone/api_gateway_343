@@ -51,7 +51,7 @@ router.use('/test', testApi); //Api for messaging
 
 /** ALL BASE URLS FOR SILOS, CHANGE AS NEEDED **/
 const HR_API_BASE_URL = "http://kennuware-1772705765.us-east-1.elb.amazonaws.com/api";
-const SALES_API_BASE_URL = "http://54.242.81.38:8080";
+const SALES_API_BASE_URL = "http://54.242.81.38";
 const ACCOUNTING_API_BASE_URL = "http://kennuware-1772705765.us-east-1.elb.amazonaws.com/api";
 const CS_API_BASE_URL = "https://api-customerservice.azurewebsites.net/api";
 const MANUFACTURING_API_BASE_URL = "https://343-2175-manufacturing.azurewebsites.net/api";
