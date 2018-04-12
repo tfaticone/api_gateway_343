@@ -59,7 +59,19 @@ HR | `hr-api` | `http://kennuware-1772705765.us-east-1.elb.amazonaws.com/api`
 Sales | `sales-api` | `http://54.242.81.38:8080`
 Accounting | `accounting-api` | `N/A`
 Customer support | `cs-api` | `https://api-customerservice.azurewebsites.net/api`
-Manufacturing | `manufacturing-api` | `https://343-2175-manufacturing.azurewebsites.net`
+Manufacturing | `manufacturing-api` | `https://343-2175-manufacturing.azurewebsites.net/api`
 Inventory | `inventory-api` | `https://inventory343.azurewebsites.net/api`
 
 ** If this information is incorrect or missing, please fix it, make a pull request, and alert HR.
+
+
+#### Authentication - Token Use
+
+All API requests will have to contain a token in the request. This token will be placed in the `Authorization` 
+field in the header. This token is considered a Bearer token so the formal will be as follows:
+
+`"Authorization" : "Bearer {token}"`
+
+##### Example
+
+`"Authorization" : "BEARER eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QxIiwiYWNjb3VudFR5cGUiOiJlbXBsb3llZSIsImlkIjoyLCJpYXQiOjE1MjM1NDU3MDN9.-BnWLfBM2BXkqZFYP41F4qzj_ksQdT7wZzgbCSZR-lY"`
