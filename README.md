@@ -48,3 +48,17 @@ New URL
 `https://api-gateway-343.herokuapp.com/hr-api/employee?id=4`
 
 ** Note if you have designated /api/ in your base URL you will NOT need to retype is as shown in the example.
+
+#### Prefixes
+
+The Prefixes with pertaining base urls are as follows:
+
+Silo | Prefix | Base URL
+HR | `hr-api` | `http://kennuware-1772705765.us-east-1.elb.amazonaws.com/api`
+Sales | `sales-api` | `http://54.242.81.38:8080`
+Accounting | `accounting-api` | `N/A`
+Customer support | `cs-api` | `https://api-customerservice.azurewebsites.net/api`
+Manufacturing | `manufacturing-api` | `https://343-2175-manufacturing.azurewebsites.net`
+Inventory | `inventory-api` | `https://inventory343.azurewebsites.net/api`
+
+** If this information is incorrect or missing, please fix it, make a pull request, and alert HR.
