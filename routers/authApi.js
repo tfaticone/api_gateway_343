@@ -8,14 +8,18 @@ var sequelize = require('sequelize');
 authRouter.post('/login', (req, res) => {
     if(req.body.username && req.body.password) {
         models.users.findOne({
-            attributes: ['username', 'password'],
+            attributes: ['username', 'id', 'accountType'],
             where: {
                 username: req.body.username,
                 password: req.body.password
             }
         }).then((result) => {
            if(result) {
-               jwt.sign({result}, 'secretkey', (err, token) => {
+               jwt.sign({
+                   username: result.dataValues.username,
+                   accountType: result.dataValues.accountType,
+                   id: result.dataValues.id
+               }, 'secretkey', (err, token) => {
                    res.json({
                        token,
                        status: true
@@ -46,7 +50,6 @@ authRouter.post('/create', (req, res) => {
                 }).then((result) => {
                     jwt.sign({
                         username: result.dataValues.username,
-                        password: result.dataValues.password,
                         accountType: result.dataValues.accountType,
                         id: result.dataValues.id
                     }, 'secretkey', (err, token) => {
