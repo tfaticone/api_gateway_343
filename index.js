@@ -52,7 +52,7 @@ router.use('/test', testApi); //Api for messaging
 /** ALL BASE URLS FOR SILOS, CHANGE AS NEEDED **/
 const HR_API_BASE_URL = "http://kennuware-1772705765.us-east-1.elb.amazonaws.com/api";
 const SALES_API_BASE_URL = "http://54.242.81.38";
-const ACCOUNTING_API_BASE_URL = "https://swen-343-accounting-api.herokuapp.com/";
+const ACCOUNTING_API_BASE_URL = "https://swen-343-accounting-api.herokuapp.com";
 const CS_API_BASE_URL = "https://api-customerservice.azurewebsites.net/api";
 const MANUFACTURING_API_BASE_URL = "https://343-2175-manufacturing.azurewebsites.net/api";
 const INVENTORY_API_BASE_URL = "https://inventory343.azurewebsites.net/api";
@@ -61,6 +61,7 @@ const INVENTORY_API_BASE_URL = "https://inventory343.azurewebsites.net/api";
 router.use((req, res, next) => {
     var originUrl = req.originalUrl,
     url = "";
+    console.log(originUrl);
     if(originUrl.includes('/hr-api')){ //prefix
         var split = originUrl.split('/hr-api'); //split by prefix
         url = HR_API_BASE_URL + split[1]; //new URL
@@ -79,6 +80,11 @@ router.use((req, res, next) => {
     }else if (originUrl.includes('/inventory-api')) { //prefix
         var split = originUrl.split('/inventory-api'); //split by prefix
         url = INVENTORY_API_BASE_URL + split[1]; //url
+    } else {
+        res.status(500).json({
+            status: false,
+            message: "URL not found."
+        })
     }
     res.redirect(307, url);
 });
