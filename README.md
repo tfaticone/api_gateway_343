@@ -30,7 +30,8 @@ going directly to the API.
 
 Tests Live in the /unit_test/
 
-##Forwarding
+## Forwarding
+
 URLS will follow the same url as documented in each silos respective
 documentation. The only change that will follow is the base URL will be replaced
 with the production link and a prefix will be added for each silo. As in the url will
@@ -38,7 +39,8 @@ follow the syntax:
 
 `https://api-gateway-343.herokuapp.com/{prefix}/{querystring}`
 
-###Example
+### Example
+
 Original URL:
 `http://kennuware-1772705765.us-east-1.elb.amazonaws.com/api/employee?id=4`
 
