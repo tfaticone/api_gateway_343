@@ -1,5 +1,6 @@
 const express = require('express');
 var router = express.Router();
+var proxy = require('express-http-proxy');
 const jwt = require('jsonwebtoken');
 const app = express();
 const port = process.env.PORT || 3000;
@@ -48,6 +49,39 @@ router.use((req, res, next) => {
 var testApi = require('./routers/testApi');
 router.use('/test', testApi); //Api for messaging
 
+/** ALL BASE URLS FOR SILOS, CHANGE AS NEEDED **/
+const HR_API_BASE_URL = "http://kennuware-1772705765.us-east-1.elb.amazonaws.com/api";
+const SALES_API_BASE_URL = "http://54.242.81.38:8080";
+const ACCOUNTING_API_BASE_URL = "http://kennuware-1772705765.us-east-1.elb.amazonaws.com/api";
+const CS_API_BASE_URL = "https://api-customerservice.azurewebsites.net/api";
+const MANUFACTURING_API_BASE_URL = "https://343-2175-manufacturing.azurewebsites.net";
+const INVENTORY_API_BASE_URL = "https://inventory343.azurewebsites.net/api";
+
+/** REDIRECT **/
+router.use((req, res, next) => {
+    var originUrl = req.originalUrl,
+    url = "";
+    if(originUrl.includes('/hr-api')){ //prefix
+        var split = originUrl.split('/hr-api'); //split by prefix
+        url = HR_API_BASE_URL + split[1]; //new URL
+    } else if (originUrl.includes('/sales-api')) { //prefix
+        var split = originUrl.split('/sales-api'); //split by prefix
+        url = SALES_API_BASE_URL + split[1]; //url
+    } else if (originUrl.includes('/accounting-api')) { //prefix
+        var split = originUrl.split('/accounting-api'); //split by prefix
+        url = ACCOUNTING_API_BASE_URL + split[1]; //url
+    } else if (originUrl.includes('/cs-api')) { //prefix
+        var split = originUrl.split('/cs-api'); //split by prefix
+        url = CS_API_BASE_URL + split[1]; //url
+    } else if (originUrl.includes('/manufacturing-api')) { //prefix
+        var split = originUrl.split('/manufacturing-api'); //split by prefix
+        url = MANUFACTURING_API_BASE_URL + split[1]; //url
+    }else if (originUrl.includes('/inventory-api')) { //prefix
+        var split = originUrl.split('/inventory-api'); //split by prefix
+        url = INVENTORY_API_BASE_URL + split[1]; //url
+    }
+    res.redirect(307, url);
+});
 
 app.use('/', router);
 

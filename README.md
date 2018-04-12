@@ -29,3 +29,20 @@ going directly to the API.
 3. run `npm test` to run all unit tests
 
 Tests Live in the /unit_test/
+
+##Forwarding
+URLS will follow the same url as documented in each silos respective
+documentation. The only change that will follow is the base URL will be replaced
+with the production link and a prefix will be added for each silo. As in the url will
+follow the syntax:
+
+`https://api-gateway-343.herokuapp.com/{prefix}/{querystring}`
+
+###Example
+Original URL:
+`http://kennuware-1772705765.us-east-1.elb.amazonaws.com/api/employee?id=4`
+
+New URL
+`https://api-gateway-343.herokuapp.com/hr-api/employee?id=4`
+
+** Note if you have designated /api/ in your base URL you will NOT need to retype is as shown in the example.
