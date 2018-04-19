@@ -1,13 +1,18 @@
 const express = require('express');
+var cors = require('cors')
 var router = express.Router();
 var proxy = require('express-http-proxy');
 const jwt = require('jsonwebtoken');
 const app = express();
+app.use(cors());
 const port = process.env.PORT || 3000;
 
 /** IMPORT DEPENDENCIES */
 var bodyParser = require('body-parser');
 const Sequelize = require('sequelize');
+
+
+
 app.use(bodyParser.json()); // parse application/json
 
 /** ALL ROUTES THAT DO NOT NEED AUTHENTICATION **/
