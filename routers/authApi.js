@@ -32,6 +32,11 @@ authRouter.post('/login', (req, res) => {
                })
            }
         });
+    } else {
+        res.status(400).json({
+            status: false,
+            message: 'User account not found'
+        })
     }
 });
 
@@ -68,7 +73,7 @@ authRouter.post('/create', (req, res) => {
             }
         });
     } else {
-        res.json({
+        res.status(400).json({
             status: false,
             message: 'Improper Input'
         })

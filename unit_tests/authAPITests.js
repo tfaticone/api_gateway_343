@@ -44,7 +44,7 @@ describe('Testing Auth', function () {
         request(server)
             .post('/auth/create')
             .send({"username": "test2","type":"employee"})
-            .expect(200)
+            .expect(400)
             .expect('Content-Type', /json/)
             .end(function(err, res) {
                 if (err) done(err);
