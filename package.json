@@ -4,7 +4,7 @@
   "description": "API gateway for SWEN 343 class project",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --recursive unit_tests/"
+    "test": "mocha --exit --recursive unit_tests/"
   },
   "repository": {
     "type": "git",
